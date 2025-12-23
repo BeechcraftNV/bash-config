@@ -48,6 +48,7 @@ Personal bash configuration files for a more productive terminal experience.
 Some aliases require modern CLI tools:
 - **eza**: Modern replacement for `ls` ([installation guide](https://github.com/eza-community/eza))
 - **bat/batcat**: Syntax highlighting for `cat` ([installation guide](https://github.com/sharkdp/bat))
+- **wl-clipboard**: Wayland clipboard utilities for the `c` alias (install via package manager: `apt install wl-clipboard`)
 
 ## Structure
 
