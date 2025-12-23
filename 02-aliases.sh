@@ -19,3 +19,10 @@ alias dcl='docker compose logs -f'
 alias lmde='ssh steve@192.168.29.43'
 alias pool='cd /mnt/pool'
 alias compose='cd /opt/docker/compose'
+
+# Capture comman output
+alias t='tee /tmp/out.txt'
+alias tc='tee /tmp/claude_$(date +%s).txt'
+
+alias c='tee /tmp/out.txt | wl-copy && echo "📋 Copied to clipboard + saved to /tmp/out.txt"'
+

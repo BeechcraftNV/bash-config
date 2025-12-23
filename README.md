@@ -9,6 +9,7 @@ Personal bash configuration files for a more productive terminal experience.
 - **Modern CLI tools**: Enhanced `ls`, `ll`, `lt` using `eza`
 - **Docker shortcuts**: `dps`, `dcu`, `dcd`, `dcl` for common Docker commands
 - **Homelab access**: Quick SSH and directory navigation
+- **Output capture**: `t`, `tc`, `c` for saving and copying command output
 
 ### Functions (`03-functions.sh`)
 - **`dcp()`**: Navigate and manage Docker Compose projects in `/opt/docker/compose`
