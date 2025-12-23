@@ -6,10 +6,14 @@ Personal bash configuration files for a more productive terminal experience.
 
 ### Aliases (`02-aliases.sh`)
 - **Navigation shortcuts**: `..`, `...`, `....` for quick directory traversal
-- **Modern CLI tools**: Enhanced `ls`, `ll`, `lt` using `eza`
+- **Modern CLI tools**: Enhanced `ls`, `ll`, `lt` using `eza` and `fd` for `fdfind`
 - **Docker shortcuts**: `dps`, `dcu`, `dcd`, `dcl` for common Docker commands
 - **Homelab access**: Quick SSH and directory navigation
-- **Output capture**: `t`, `tc`, `c` for saving and copying command output
+### Output Capture (`02-aliases.sh`)
+These tools capture command output, display it, and optionally save it or copy it to the clipboard. They support both piping and direct command execution (e.g., `ls | tc` or `tc ls -la`).
+- **`t`**: Saves output to `/tmp/out.txt`.
+- **`c`**: Saves output to `/tmp/out.txt` and copies it to the clipboard (`wl-copy`).
+- **`tc`**: Saves output to a unique timestamped file in `/tmp/` and copies it to the clipboard. Ideal for capturing logs or command results for AI chat.
 
 ### Functions (`03-functions.sh`)
 - **`dcp()`**: Navigate and manage Docker Compose projects in `/opt/docker/compose`
@@ -47,6 +51,7 @@ Personal bash configuration files for a more productive terminal experience.
 
 Some aliases require modern CLI tools:
 - **eza**: Modern replacement for `ls` ([installation guide](https://github.com/eza-community/eza))
+- **fd-find**: Fast, user-friendly alternative to `find` (`apt install fd-find`)
 - **bat/batcat**: Syntax highlighting for `cat` ([installation guide](https://github.com/sharkdp/bat))
 - **wl-clipboard**: Wayland clipboard utilities for the `c` alias (install via package manager: `apt install wl-clipboard`)
 
