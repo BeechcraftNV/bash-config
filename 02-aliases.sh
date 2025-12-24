@@ -17,7 +17,7 @@ alias dcd='docker compose down'
 alias dcl='docker compose logs -f'
 
 # Homelab specific
-alias lmde='ssh steve@192.168.29.43'
+alias lmde='ssh 192.168.29.43'
 alias pool='cd /mnt/pool'
 alias compose='cd /opt/docker/compose'
 
