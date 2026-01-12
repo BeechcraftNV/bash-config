@@ -6,8 +6,11 @@ COLOR_PATH='\[\033[1;33m\]'      # Yellow
 COLOR_GIT='\[\033[1;35m\]'       # Magenta
 COLOR_PROMPT='\[\033[1;36m\]'    # Cyan
 
+# Cursor definitions
+CURSOR_BLINK_UNDERLINE='\[\033[3 q\]'
+
 # Two-line prompt with git support
-PS1="${COLOR_USER}\u${COLOR_RESET}"
+PS1="${CURSOR_BLINK_UNDERLINE}${COLOR_USER}\u${COLOR_RESET}"
 PS1+=" at ${COLOR_HOST}\h${COLOR_RESET}"
 PS1+=" in ${COLOR_PATH}\w${COLOR_RESET}"
 PS1+=" ${COLOR_GIT}\$(git_branch)${COLOR_RESET}"

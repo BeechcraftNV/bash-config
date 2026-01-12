@@ -21,14 +21,17 @@ alias lmde='ssh 192.168.29.43'
 alias pool='cd /mnt/pool'
 alias compose='cd /opt/docker/compose'
 
+# TLI editor fresh
+# TLI editor fresh removed (using .deb version)
+
 # Capture command output
 # Usage: <command> | tc  OR  tc <command>
 
 # Remove existing aliases to prevent syntax errors when defining functions
-unalias t c tc 2>/dev/null
+unalias t c tc 2>/dev/null || true
 
 _copy_to_clipboard() {
-    local file=$1
+    local file="$1"
     if command -v wl-copy >/dev/null; then
         # Retry mechanism: 2 attempts with a 2s timeout each
         for i in {1..2}; do
@@ -45,8 +48,8 @@ _copy_to_clipboard() {
 t() {
     local file="/tmp/out.txt"
     if [ $# -gt 0 ]; then
-        eval "$@" 2>&1 | tee "$file"
-        return ${PIPESTATUS[0]}
+        "$@" 2>&1 | tee "$file"
+        return "${PIPESTATUS[0]}"
     else
         cat | tee "$file"
     fi
@@ -56,27 +59,28 @@ c() {
     local file="/tmp/out.txt"
     local status=0
     if [ $# -gt 0 ]; then
-        eval "$@" 2>&1 | tee "$file"
-        status=${PIPESTATUS[0]}
+        "$@" 2>&1 | tee "$file"
+        status="${PIPESTATUS[0]}"
     else
         cat | tee "$file"
     fi
     _copy_to_clipboard "$file"
-    return $status
+    return "$status"
 }
 
 tc() {
     local file="/tmp/claude_$(date +%Y%m%d_%H%M%S).txt"
     local status=0
     if [ $# -gt 0 ]; then
-        eval "$@" 2>&1 | tee "$file"
-        status=${PIPESTATUS[0]}
+        "$@" 2>&1 | tee "$file"
+        status="${PIPESTATUS[0]}"
     else
         cat | tee "$file"
     fi
     _copy_to_clipboard "$file"
     echo "💾 Saved to $file"
-    return $status
+    return "$status"
 }
 
 alias gem='npx @google/gemini-cli@latest'
+
