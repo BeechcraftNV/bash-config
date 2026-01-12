@@ -9,3 +9,6 @@
 
 # Allow README if you add one
 !README.md
+
+# Allow bashrc
+!bashrc
