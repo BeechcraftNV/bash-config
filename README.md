@@ -2,28 +2,19 @@
 
 Personal bash configuration files for a more productive terminal experience.
 
-## Features
+## Structure
 
-### Aliases (`02-aliases.sh`)
-- **Navigation shortcuts**: `..`, `...`, `....` for quick directory traversal
-- **Modern CLI tools**: Enhanced `ls`, `ll`, `lt` using `eza` and `fd` for `fdfind`
-- **Docker shortcuts**: `dps`, `dcu`, `dcd`, `dcl` for common Docker commands
-- **Homelab access**: Quick SSH and directory navigation
-### Output Capture (`02-aliases.sh`)
-These tools capture command output, display it, and optionally save it or copy it to the clipboard. They support both piping and direct command execution (e.g., `ls | tc` or `tc ls -la`).
-- **`t`**: Saves output to `/tmp/out.txt`.
-- **`c`**: Saves output to `/tmp/out.txt` and copies it to the clipboard (`wl-copy`).
-- **`tc`**: Saves output to a unique timestamped file in `/tmp/` and copies it to the clipboard. Ideal for capturing logs or command results for AI chat.
+Files are numbered to control load order:
 
-### Functions (`03-functions.sh`)
-- **`dcp()`**: Navigate and manage Docker Compose projects in `/opt/docker/compose`
-- **`git_branch()`**: Display current git branch in prompt
-- **`proj()`**: Quickly jump to projects in common directories
-
-### Prompt (`04-prompt.sh`)
-- Colorful two-line prompt with git branch integration
-- Shows: user, host, current path, and git branch
-- Clean and readable color scheme
+| File | Purpose |
+|------|---------|
+| `bashrc` | Entry point (symlinked from `~/.bashrc`) |
+| `00-shell-options.sh` | History, shell options, lesspipe, dircolors |
+| `02-aliases.sh` | Command aliases |
+| `03-functions.sh` | Shell functions |
+| `04-prompt.sh` | Prompt customization |
+| `05-completions.sh` | Tab completion (bash-completion, fzf, atuin, uv) |
+| `06-exports.sh` | Environment variables |
 
 ## Installation
 
@@ -32,36 +23,78 @@ These tools capture command output, display it, and optionally save it or copy i
    git clone git@github.com:BeechcraftNV/bash-config.git ~/.bashrc.d
    ```
 
-2. Source the configuration files in your `~/.bashrc`:
+2. Symlink bashrc:
    ```bash
-   # Load custom bash configuration
-   if [ -d ~/.bashrc.d ]; then
-       for file in ~/.bashrc.d/*.sh; do
-           [ -r "$file" ] && source "$file"
-       done
-   fi
+   ln -sf ~/.bashrc.d/bashrc ~/.bashrc
    ```
 
-3. Reload your bash configuration:
+3. Reload:
    ```bash
    source ~/.bashrc
    ```
 
+## Features
+
+### Shell Options (`00-shell-options.sh`)
+- History settings (append, dedup, size)
+- Window size checking
+- Lesspipe for non-text files
+- Dircolors support
+
+### Aliases (`02-aliases.sh`)
+- **Navigation**: `..`, `...`, `....`, `.....`
+- **File listing** (eza): `ls`, `ll`, `la`, `lt`, `l.`
+- **Safer file ops**: `cp -iv`, `mv -iv`, `rm -I`
+- **Disk/system info**: `duf`, `dfh`, `meminfo`, `psmem`, `pscpu`, `myip`, `ports`
+- **APT management**: `aptup`, `aptupg`, `aptin`, `aptrm`, `aptclean`
+- **Docker**: `dps`, `dcu`, `dcd`, `dcl`
+- **Git**: Full suite (`g`, `ga`, `gc`, `gco`, `gst`, `gl`, `gp`, `gps`, etc.)
+- **Utilities**: `clr`, `h`, `hgrep`, `weather`, `serve`
+- **Printing**: `lp`, `lpq`, `printduplex`, `quickprint`
+
+### Output Capture (`02-aliases.sh`)
+Capture command output, display it, and optionally copy to clipboard:
+- **`t`**: Saves output to `/tmp/out.txt`
+- **`c`**: Saves to `/tmp/out.txt` + copies to clipboard
+- **`tc`**: Saves to timestamped file + copies to clipboard
+
+### Functions (`03-functions.sh`)
+- **`dcp()`**: Navigate and manage Docker Compose projects
+- **`git_branch()`**: Display current git branch in prompt
+- **`proj()`**: Quickly jump to projects in common directories
+
+### Helper Functions (`02-aliases.sh`)
+- **`mkcd`**: Create directory and cd into it
+- **`extract`**: Universal archive extractor
+- **`bak`**: Backup file with timestamp
+- **`findtext`**: Search text in files recursively
+- **`quickprint`**: Quick print with copy count
+
+### Prompt (`04-prompt.sh`)
+- Two-line colorful prompt with git branch
+- Shows: user, host, path, git branch
+- Debian chroot and xterm title support
+
+### Completions (`05-completions.sh`)
+- Bash completion
+- FZF key bindings
+- Atuin shell history
+- UV (Python) completions
+
+### Exports (`06-exports.sh`)
+- Environment variables (GEMINI_MODEL, ZED_ALLOW_EMULATED_GPU)
+- Cargo/Rust environment
+
 ## Dependencies
 
-Some aliases require modern CLI tools:
-- **eza**: Modern replacement for `ls` ([installation guide](https://github.com/eza-community/eza))
-- **fd-find**: Fast, user-friendly alternative to `find` (`apt install fd-find`)
-- **bat/batcat**: Syntax highlighting for `cat` ([installation guide](https://github.com/sharkdp/bat))
-- **wl-clipboard**: Wayland clipboard utilities for the `c` alias (install via package manager: `apt install wl-clipboard`)
+Some features require these tools:
+- **eza**: Modern `ls` replacement
+- **fd-find**: Fast `find` alternative (`apt install fd-find`)
+- **bat/batcat**: Syntax highlighting cat
+- **wl-clipboard**: Wayland clipboard (`apt install wl-clipboard`)
+- **fzf**: Fuzzy finder
+- **atuin**: Shell history search
 
-## Structure
+## Adding New Config
 
-Files are numbered to control load order:
-- `02-aliases.sh` - Command aliases
-- `03-functions.sh` - Shell functions
-- `04-prompt.sh` - Prompt customization
-
-## Contributing
-
-This is a personal configuration repository, but feel free to fork and adapt to your needs.
+Drop a new `.sh` file in `~/.bashrc.d/`. Number prefix controls load order.
