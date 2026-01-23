@@ -19,9 +19,10 @@ alias ~='cd ~'
 alias home='cd ~'
 
 # Homelab specific
-alias lmde='ssh steve@192.168.29.43'
+alias lmde='ssh 192.168.29.43'
 alias pool='cd /mnt/pool'
 alias compose='cd /opt/docker/compose'
+alias bin='cd /home/steven/.local/bin'
 
 # -----------------------------------------------------------------------------
 # FILE LISTING (eza)
@@ -156,6 +157,7 @@ alias listaliases="alias | sort | less"
 
 # Other tools
 alias gem='npx @google/gemini-cli@latest'
+alias fresh-editor='npx @fresh-editor/fresh-editor@latest'
 
 # -----------------------------------------------------------------------------
 # PRINTING (Brother DCP-L2550DW)
