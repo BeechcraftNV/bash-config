@@ -10,7 +10,7 @@ fi
 # -----------------------------------------------------------------------------
 COLOR_RESET='\[\033[0m\]'
 COLOR_USER='\[\033[1;32m\]'      # Green
-COLOR_HOST='\[\033[1;34m\]'      # Blue
+COLOR_HOST='\[\033[1;31m\]'      # Red
 COLOR_PATH='\[\033[1;33m\]'      # Yellow
 COLOR_GIT='\[\033[1;35m\]'       # Magenta
 COLOR_PROMPT='\[\033[1;36m\]'    # Cyan
