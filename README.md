@@ -83,6 +83,7 @@ Capture command output, display it, and optionally copy to clipboard:
 
 ### Exports (`06-exports.sh`)
 - Environment variables (GEMINI_MODEL, ZED_ALLOW_EMULATED_GPU)
+- npm global path
 - Cargo/Rust environment
 
 ## Dependencies
