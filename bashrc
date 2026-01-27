@@ -8,3 +8,4 @@ esac
 
 # Load modular config from ~/.bashrc.d/
 for f in ~/.bashrc.d/*.sh; do [ -r "$f" ] && source "$f"; done
+. "$HOME/.cargo/env"
