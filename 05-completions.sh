@@ -16,15 +16,6 @@ fi
 # eval "$(fzf --bash)"
 
 # -----------------------------------------------------------------------------
-# ATUIN (shell history)
-# -----------------------------------------------------------------------------
-if [ -f "$HOME/.atuin/bin/env" ]; then
-    . "$HOME/.atuin/bin/env"
-    [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
-    eval "$(atuin init bash)"
-fi
-
-# -----------------------------------------------------------------------------
 # UV (Python package manager)
 # -----------------------------------------------------------------------------
 command -v uv >/dev/null 2>&1 && eval "$(uv generate-shell-completion bash)"

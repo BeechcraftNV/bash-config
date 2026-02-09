@@ -50,18 +50,17 @@ Files are numbered to control load order:
 - **Docker**: `dps`, `dcu`, `dcd`, `dcl`
 - **Git**: Full suite (`g`, `ga`, `gc`, `gco`, `gst`, `gl`, `gp`, `gps`, etc.)
 - **Utilities**: `clr`, `h`, `hgrep`, `weather`, `serve`
-- **Printing**: `lp`, `lpq`, `printduplex`, `quickprint`
-
-### Output Capture (`02-aliases.sh`)
-Capture command output, display it, and optionally copy to clipboard:
-- **`t`**: Saves output to `/tmp/out.txt`
-- **`c`**: Saves to `/tmp/out.txt` + copies to clipboard
-- **`tc`**: Saves to timestamped file + copies to clipboard
+- **Printing**: `lp`, `lpq`, `printduplex`
 
 ### Functions (`03-functions.sh`)
+- **Output Capture**: Capture command output and optionally copy to clipboard:
+    - **`t`**: Saves output to `/tmp/out.txt`
+    - **`c`**: Saves to `/tmp/out.txt` + copies to clipboard
+    - **`tc`**: Saves to timestamped file + copies to clipboard
 - **`dcp()`**: Navigate and manage Docker Compose projects
 - **`git_branch()`**: Display current git branch in prompt
 - **`proj()`**: Quickly jump to projects in common directories
+
 
 ### Custom Scripts (`bin/`)
 - **`quote [category]`**: Fetch random quotes/jokes (ZenQuotes, JokeAPI, AdviceSlip)
@@ -83,7 +82,6 @@ Capture command output, display it, and optionally copy to clipboard:
 ### Completions (`05-completions.sh`)
 - Bash completion
 - FZF key bindings
-- Atuin shell history
 - UV (Python) completions
 
 ### Exports (`06-exports.sh`)
@@ -91,13 +89,19 @@ Capture command output, display it, and optionally copy to clipboard:
 - npm global path
 - Cargo/Rust environment
 
+### NVM (`90-nvm.sh`)
+- Lazy-loads NVM on first use of `node`, `npm`, `npx`, or `nvm` to speed up shell startup.
+
+### Atuin (`91-atuin.sh`)
+- Shell history management and sync.
+
 ## Dependencies
 
 Some features require these tools:
 - **eza**: Modern `ls` replacement
 - **fd-find**: Fast `find` alternative (`apt install fd-find`)
 - **bat/batcat**: Syntax highlighting cat
-- **wl-clipboard**: Wayland clipboard (`apt install wl-clipboard`)
+- **wl-clipboard / xclip / xsel**: Clipboard support
 - **fzf**: Fuzzy finder
 - **atuin**: Shell history search
 
