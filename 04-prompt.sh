@@ -33,8 +33,11 @@ PS1+="\n${COLOR_PROMPT}❯${COLOR_RESET} "
 # XTERM TITLE
 # -----------------------------------------------------------------------------
 # Set terminal title to user@host:dir for xterm/rxvt
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-esac
+# Skip for WezTerm to avoid notification spam
+if [[ "$TERM_PROGRAM" != "WezTerm" ]]; then
+    case "$TERM" in
+    xterm*|rxvt*)
+        PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+        ;;
+    esac
+fi
