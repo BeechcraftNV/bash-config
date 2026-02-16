@@ -12,3 +12,7 @@
 
 # Allow bashrc
 !bashrc
+
+# Allow bin directory and scripts
+!bin/
+!bin/*

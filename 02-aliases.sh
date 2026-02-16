@@ -156,7 +156,7 @@ alias src='source ~/.bashrc'
 alias listaliases="alias | sort | less"
 
 # Other tools
-alias gem='npx @google/gemini-cli@latest'
+alias gem='gemini'
 alias fresh-editor='npx @fresh-editor/fresh-editor@latest'
 
 # -----------------------------------------------------------------------------

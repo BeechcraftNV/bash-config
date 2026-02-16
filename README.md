@@ -63,6 +63,11 @@ Capture command output, display it, and optionally copy to clipboard:
 - **`git_branch()`**: Display current git branch in prompt
 - **`proj()`**: Quickly jump to projects in common directories
 
+### Custom Scripts (`bin/`)
+- **`quote [category]`**: Fetch random quotes/jokes (ZenQuotes, JokeAPI, AdviceSlip)
+  - Supports `--help` and `--version`.
+  - Categories: `tech`, `advice`, or default.
+
 ### Helper Functions (`02-aliases.sh`)
 - **`mkcd`**: Create directory and cd into it
 - **`extract`**: Universal archive extractor
