@@ -1,4 +1,4 @@
-[[ $- != *i* ]] && return
+[[ $- == *i* ]] || return 0
 
 if [[ ! -f ~/.blesh/ble.sh ]]; then
   echo "ble.sh not found at ~/.blesh/ble.sh"
@@ -6,5 +6,8 @@ if [[ ! -f ~/.blesh/ble.sh ]]; then
   return
 fi
 
-source ~/.blesh/ble.sh --noattach
-ble-attach
+if [[ ${BLE_VERSION-} ]]; then
+    ble-attach
+else
+    source ~/.blesh/ble.sh --attach=prompt
+fi

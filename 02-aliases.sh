@@ -23,6 +23,7 @@ alias lmde='ssh 192.168.29.43'
 alias pool='cd /mnt/pool'
 alias compose='cd /opt/docker/compose'
 alias bin='cd /home/steven/.local/bin'
+alias bashd='cd ~/.bashrc.d/'
 
 # -----------------------------------------------------------------------------
 # FILE LISTING (eza)
