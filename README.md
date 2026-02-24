@@ -72,6 +72,11 @@ Files are numbered to control load order:
 ### Capture (`07-capture.sh`)
 Three wrappers for capturing and highlighting command output. All preserve the command's exit code and capture both stdout and stderr.
 
+Clipboard transport is selected automatically:
+- **SSH session** (`$SSH_CONNECTION` set): OSC 52 escape sequence — pushes clipboard to the local terminal emulator (WezTerm, kitty, iTerm2, etc.)
+- **Local Wayland**: `wl-copy`
+- **Local X11 fallback**: `xclip`
+
 - **`cap <cmd>`** — run a command, display output, and copy it to clipboard
   ```bash
   cap git diff HEAD~1

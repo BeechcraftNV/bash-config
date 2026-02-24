@@ -1,12 +1,17 @@
 # -----------------------------------------------------------------------------
 # CAPTURE FUNCTIONS (cap, blk, cblk)
 # Clipboard capture and visual block delimiters for command output.
-# Clipboard uses wl-copy (Wayland); install xclip for X11 fallback.
+# Clipboard: OSC 52 over SSH, wl-copy (Wayland) locally, xclip as X11 fallback.
 # -----------------------------------------------------------------------------
 
 _cap_copy() {
     local file=$1
-    if command -v wl-copy >/dev/null 2>&1; then
+    if [[ -n "$SSH_CONNECTION" ]]; then
+        # Remote SSH: use OSC 52 to push clipboard to local terminal emulator
+        local b64
+        b64=$(base64 < "$file" | tr -d '\n')
+        printf "\e]52;c;%s\a" "$b64" > /dev/tty
+    elif command -v wl-copy >/dev/null 2>&1; then
         wl-copy < "$file"
     elif command -v xclip >/dev/null 2>&1; then
         xclip -selection clipboard < "$file"
