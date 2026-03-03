@@ -12,8 +12,12 @@ fi
 # -----------------------------------------------------------------------------
 # FZF
 # -----------------------------------------------------------------------------
-[ -f /usr/share/doc/fzf/examples/key-bindings.bash ] && source /usr/share/doc/fzf/examples/key-bindings.bash
-# eval "$(fzf --bash)"
+if command -v fzf >/dev/null 2>&1; then
+    # fzf >= 0.48: unified --bash flag; fall back to legacy key-bindings path
+    fzf --bash >/dev/null 2>&1 \
+        && eval "$(fzf --bash)" \
+        || { [[ -f /usr/share/doc/fzf/examples/key-bindings.bash ]] && source /usr/share/doc/fzf/examples/key-bindings.bash; }
+fi
 
 # -----------------------------------------------------------------------------
 # UV (Python package manager)

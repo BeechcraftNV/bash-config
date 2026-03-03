@@ -11,3 +11,6 @@ if [[ ${BLE_VERSION-} ]]; then
 else
     source ~/.blesh/ble.sh --attach=prompt
 fi
+
+# fzf key bindings via ble.sh integration (Ctrl-R history, Ctrl-T file, Alt-C cd)
+command -v fzf >/dev/null 2>&1 && ble-import contrib/fzf-key-bindings

@@ -114,7 +114,7 @@ steven at hostname in ~/projects/foo (main)
 
 ### Completions (`05-completions.sh`)
 - System bash-completion
-- fzf key bindings (Ctrl-R history, Ctrl-T file, Alt-C cd)
+- fzf key bindings (Ctrl-R history, Ctrl-T file, Alt-C cd) — uses `fzf --bash` (fzf ≥ 0.48) with fallback to the legacy key-bindings path for older installs
 - `uv` (Python package manager) completions
 
 ### Exports (`06-exports.sh`)
@@ -131,6 +131,7 @@ Shell history search and sync. Replaces Ctrl-R with a fuzzy, filterable history 
 
 ### ble.sh (`99-blesh.sh`)
 Bash Line Editor — syntax highlighting, enhanced completion menus, vim mode. Prints install instructions if not found.
+When fzf is available, loads ble.sh's native fzf integration (`contrib/fzf-key-bindings`) so Ctrl-R, Ctrl-T, and Alt-C are correctly bound through ble.sh's key system rather than readline.
 
 ## Dependencies
 
